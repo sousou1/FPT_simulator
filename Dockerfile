@@ -53,17 +53,9 @@ RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
 # Create start shell on root Desktop
 
 RUN mkdir /root/Desktop
-RUN echo "#!/bin/bash" >> /root/Desktop/start_autoware.sh
-RUN echo "" >> /root/Desktop/start_autoware.sh
-RUN echo "su autoware" >> /root/Desktop/start_autoware.sh
-RUN echo "source /home/autoware/Autoware/install/setup.bash" >> /root/Desktop/start_autoware.sh
-RUN echo "roslaunch runtime_manager runtime_manager.launch" >> /root/Desktop/start_autoware.sh
+RUN echo "#!/bin/bash" >> /root/Desktop/simulator.sh
+RUN echo "" >> /root/Desktop/simulator.sh
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/simulator.sh
+RUN echo "roslaunch runtime_manager runtime_manager.launch" >> /root/Desktop/simulator.sh
 
-
-RUN chmod +x /root/Desktop/start_autoware.sh
-
-# Terminal Setting
-ENV LANG="en_US.UTF-8"
-RUN echo "export LANG=\"en_US.UTF-8\"" >> /home/$USERNAME/.bashrc
-RUN echo "cd /home/autoware" >> /root/.bashrc
-RUN echo "su autoware" >> /root/.bashrc
+RUN chmod +x /root/Desktop/simulator.sh
