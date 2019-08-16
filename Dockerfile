@@ -36,15 +36,15 @@ RUN apt-get update && apt-get install -y \
 
 
 # download turtlebot3 model
-RUN mkdir -p /home/ubuntu/catkin_ws/src/ \
-    && cd //home/ubuntu/catkin_ws/src/ \
+RUN mkdir -p /root/catkin_ws/src/ \
+    && cd /root/catkin_ws/src/ \
     && git clone https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git \
     && git clone https://github.com/ROBOTIS-GIT/turtlebot3.git \
     && git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 
 
 RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
-           cd /home/ubuntu/catkin_ws; \
+           cd /root/catkin_ws; \
            catkin_make;'" 
 
 
@@ -59,5 +59,5 @@ RUN echo "roslaunch runtime_manager runtime_manager.launch" >> /root/Desktop/sim
 RUN chmod +x /root/Desktop/simulator.sh
 
 RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
-RUN echo "/home/ubuntu/catkin_ws/devel/setup.bash" >> /root/.bashrc
+RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
 RUN echo "export TURTLEBOT3_MODEL=burger" >> /root/.bashrc
