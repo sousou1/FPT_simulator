@@ -58,4 +58,6 @@ RUN echo "roslaunch runtime_manager runtime_manager.launch" >> /root/Desktop/sim
 
 RUN chmod +x /root/Desktop/simulator.sh
 
-RUN echo "source /opt/ros/kinetic/setup.bash" >> ~/.bashrc
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
+RUN echo "/root/catkin_ws/devel/setup.bash" >> /root/.bashrc
+RUN echo "export TURTLEBOT3_MODEL=burger" >> /root/.bashrc
