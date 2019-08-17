@@ -82,7 +82,3 @@ RUN chmod +x /root/Desktop/teleop.sh
 RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
 RUN echo "export TURTLEBOT3_MODEL=burger" >> /root/.bashrc
-
-source /opt/ros/kinetic/setup.bash
-source /root/catkin_ws/devel/setup.bash
-export TURTLEBOT3_MODEL=burger
