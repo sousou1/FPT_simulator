@@ -47,6 +47,17 @@ RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
            cd /root/catkin_ws; \
            catkin_make;'" 
 
+COPY turtlebot3_simulations /tmp/turtlebot3_simulations
+COPY turtlebot3/turtlebot3_description /tmp/turtlebot3_description
+
+RUN cp -r /tmp/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/ \
+    && cp -r  /tmp/turtlebot3_simulations/turtlebot3_gazebo/launch/FPT_C.launch /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/launch \
+    && cp -r  /tmp/turtlebot3_simulations/turtlebot3_gazebo/worlds/FPT_C.world /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/worlds \
+    && cp -r  /tmp/turtlebot3_description/urdf/turtlebot3_burger.gazebo.xacro /root/catkin_ws/src/turtlebot3/turtlebot3_description/urdf \
+    && cp -r  /tmp/turtlebot3_description/urdf/turtlebot3_burger.urdf.xacro /root/catkin_ws/src/turtlebot3/turtlebot3_description/urdf 
+
+
+
 
 # Create start shell on root Desktop
 
