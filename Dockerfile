@@ -76,6 +76,7 @@ RUN echo "#!/bin/bash" >> /root/Desktop/teleop.sh \
     && echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/teleop.sh \
     && echo "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" >> /root/Desktop/teleop.sh
 
+
 RUN chmod +x /root/Desktop/simulator.sh
 RUN chmod +x /root/Desktop/teleop.sh
 
