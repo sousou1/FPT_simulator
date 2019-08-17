@@ -61,6 +61,7 @@ RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
 
 # Create start shell on root Desktop
 
+RUN mkdir /root/Desktop
 RUN echo "#!/bin/bash" >> /root/Desktop/simulator.sh \
     && echo "" >> /root/Desktop/simulator.sh \
     && echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/simulator.sh \
