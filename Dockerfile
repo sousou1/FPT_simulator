@@ -61,19 +61,19 @@ RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
 
 # Create start shell on root Desktop
 
-RUN echo "#!/bin/bash" >> /root/Desktop/simulator.sh \
-    && echo "" >> /root/Desktop/simulator.sh \
-    && echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/simulator.sh \
-    && echo "source /root/catkin_ws/devel/setup.bash" >> /root/Desktop/simulator.sh \
-    && echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/simulator.sh \
-    && echo "roslaunch turtlebot3_gazebo FPT_C.launch" >> /root/Desktop/simulator.sh
+RUN echo "#!/bin/bash" >> /root/Desktop/simulator.sh
+RUN echo "" >> /root/Desktop/simulator.sh
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/simulator.sh
+RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/Desktop/simulator.sh
+RUN echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/simulator.sh
+RUN echo "roslaunch turtlebot3_gazebo FPT_C.launch" >> /root/Desktop/simulator.sh
 
-RUN echo "#!/bin/bash" >> /root/Desktop/teleop.sh \
-    && echo "" >> /root/Desktop/teleop.sh \
-    && echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/teleop.sh \
-    && echo "source /root/catkin_ws/devel/setup.bash" >> /root/Desktop/teleop.sh \
-    && echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/teleop.sh \
-    && echo "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" >> /root/Desktop/teleop.sh
+RUN echo "#!/bin/bash" >> /root/Desktop/teleop.sh
+RUN echo "" >> /root/Desktop/teleop.sh
+RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/teleop.sh
+RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/Desktop/teleop.sh
+RUN echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/teleop.sh
+RUN echo "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" >> /root/Desktop/teleop.sh
 
 RUN chmod +x /root/Desktop/simulator.sh
 RUN chmod +x /root/Desktop/teleop.sh
