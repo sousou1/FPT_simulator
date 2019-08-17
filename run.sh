@@ -9,4 +9,4 @@ docker run \
        --env="XAUTHORITY=${XAUTH}" \
        --env RESOLUTION=1280x720 \
        -e VNC_PASSWORD=ubuntu \
-       fpt_simulator:latest
+       sousou1/fpt-simulator:latest
