@@ -43,31 +43,35 @@ RUN mkdir -p /root/catkin_ws/src/ \
     && git clone https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git
 
 
-RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
-           cd /root/catkin_ws; \
-           catkin_make;'" 
 
-COPY turtlebot3_simulations /tmp/turtlebot3_simulations
-COPY turtlebot3/turtlebot3_description /tmp/turtlebot3_description
+COPY gazebo_simulation/turtlebot3_simulations /tmp/turtlebot3_simulations
+COPY gazebo_simulation/turtlebot3/turtlebot3_description /tmp/turtlebot3_description
 
 RUN cp -r /tmp/turtlebot3_simulations/turtlebot3_gazebo/models/road_meshes /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/models/ \
     && cp -r  /tmp/turtlebot3_simulations/turtlebot3_gazebo/launch/FPT_C.launch /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/launch \
     && cp -r  /tmp/turtlebot3_simulations/turtlebot3_gazebo/worlds/FPT_C.world /root/catkin_ws/src/turtlebot3_simulations/turtlebot3_gazebo/worlds \
     && cp -r  /tmp/turtlebot3_description/urdf/turtlebot3_burger.gazebo.xacro /root/catkin_ws/src/turtlebot3/turtlebot3_description/urdf \
-    && cp -r  /tmp/turtlebot3_description/urdf/turtlebot3_burger.urdf.xacro /root/catkin_ws/src/turtlebot3/turtlebot3_description/urdf 
+    && cp -r  /tmp/turtlebot3_description/urdf/turtlebot3_burger.urdf.xacro /root/catkin_ws/src/turtlebot3/turtlebot3_description/urdf
 
 
-
+RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
+           cd /root/catkin_ws; \
+           catkin_make;'"
 
 # Create start shell on root Desktop
 
 RUN mkdir /root/Desktop
 RUN echo "#!/bin/bash" >> /root/Desktop/simulator.sh
 RUN echo "" >> /root/Desktop/simulator.sh
-RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/simulator.sh
-RUN echo "roslaunch runtime_manager runtime_manager.launch" >> /root/Desktop/simulator.sh
+RUN echo "roslaunch turtlebot3_gazebo FPT_C.launch" >> /root/Desktop/simulator.sh
+
+RUN echo "#!/bin/bash" >> /root/Desktop/teleop.sh
+RUN echo "" >> /root/Desktop/teleop.sh
+RUN echo "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" >> /root/Desktop/teleop.sh
 
 RUN chmod +x /root/Desktop/simulator.sh
+RUN chmod +x /root/Desktop/teleop.sh
+
 
 RUN echo "source /opt/ros/kinetic/setup.bash" >> /root/.bashrc
 RUN echo "source /root/catkin_ws/devel/setup.bash" >> /root/.bashrc
