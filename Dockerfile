@@ -59,6 +59,13 @@ RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
            cd /root/catkin_ws; \
            catkin_make;'"
 
+
+# Gazebo upgrade
+RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" >> /etc/apt/sources.list.d/gazebo-stable.list
+RUN su -c "bash -c 'wget http://packages.osrfoundation.org/gazebo.key -O - |  apt-key add - '" $USERNAME
+RUN apt update
+RUN apt upgrade
+
 # Create start shell on root Desktop
 
 RUN mkdir /root/Desktop
