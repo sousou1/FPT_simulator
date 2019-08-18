@@ -64,7 +64,7 @@ RUN su -c "bash -c 'source /opt/ros/kinetic/setup.bash; \
 RUN echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" >> /etc/apt/sources.list.d/gazebo-stable.list
 RUN su -c "bash -c 'wget http://packages.osrfoundation.org/gazebo.key -O - |  apt-key add - '" $USERNAME
 RUN apt update
-RUN apt upgrade
+RUN apt upgrade -y
 
 # Create start shell on root Desktop
 
@@ -83,6 +83,11 @@ RUN echo "#!/bin/bash" >> /root/Desktop/teleop.sh \
     && echo "export TURTLEBOT3_MODEL=burger" >> /root/Desktop/teleop.sh \
     && echo "roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch" >> /root/Desktop/teleop.sh
 
+RUN echo "#!/bin/bash" >> /root/Desktop/cv_sample.sh \
+    && echo "" >> /root/Desktop/cv_sample.sh \
+    && echo "source /opt/ros/kinetic/setup.bash" >> /root/Desktop/cv_sample.sh \
+    && echo "source /root/catkin_ws/devel/setup.bash" >> /root/Desktop/cv_sample.sh \
+    && echo "rosrun opencv_sample opencv_sample" >> /root/Desktop/cv_sample.sh
 
 RUN chmod +x /root/Desktop/simulator.sh
 RUN chmod +x /root/Desktop/teleop.sh
