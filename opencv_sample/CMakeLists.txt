@@ -170,4 +170,6 @@ include_directories(
 
 
 add_executable(opencv_sample src/opencv_sample.cpp)
+add_executable(autonomous src/autonomous.cpp)
 target_link_libraries(opencv_sample ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
+target_link_libraries(autonomous ${catkin_LIBRARIES} ${OpenCV_LIBRARIES})
