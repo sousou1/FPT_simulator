@@ -1,8 +1,7 @@
 FROM dorowu/ubuntu-desktop-lxde-vnc:xenial
-MAINTAINER So Tamura <so.tamura@tier4.jp>
+MAINTAINER So Tamura <tamusou6953@gmail.com>
 RUN sed -i.bak -e "s%http://tw.archive.ubuntu.com/ubuntu/%http://ftp.iij.ad.jp/pub/linux/ubuntu/archive/%g" /etc/apt/sources.list
 
-# Develop
 RUN apt-get update && apt-get install -y \
         software-properties-common \
         wget curl git cmake cmake-curses-gui \
@@ -11,8 +10,6 @@ RUN apt-get update && apt-get install -y \
 	libgsl0-dev \
         libgoogle-perftools-dev \
         libeigen3-dev
-
-# RUN apt-get update && apt-get install -y git curl cmake wget
 
 # Intall ROS
 RUN apt-get update && apt-get install -q -y \
